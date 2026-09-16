@@ -1,0 +1,30 @@
+{
+  "optim": {
+    "peak_lr": 0.0005,
+    "warmup_steps": 500,
+    "min_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "grad_clip_norm": 1.0
+  },
+  "data": {
+    "lmdb_path": "${QUILT_LMDB}",
+    "caption_col": "caption",
+    "image_col": "image_path",
+    "val_fraction": 0.02,
+    "max_text_len": 128,
+    "image_size": 224
+  },
+  "epochs": 20,
+  "batch_size": 128,
+  "grad_accum": 8,
+  "gradient_cache": true,
+  "num_workers": 12,
+  "amp": true,
+  "seed": 0,
+  "early_stop_patience": 3,
+  "min_epochs": 20,
+  "run_name": "lumen_quilt_clean"
+}

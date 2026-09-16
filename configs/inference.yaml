@@ -1,0 +1,40 @@
+# WSI inference configuration, read by cli/extract_wsi_embeddings.py.
+#
+# The model is not selected here. It comes from the registry via --model,
+# defaulting to PAPER_CHECKPOINT. Do not add a `model:` block.
+#
+# Every key below is read. Nothing inert is kept here.
+
+inference:
+  resolution:    2.0     # target MPP; uses closest available slide pyramid level
+  tile_size:     224     # px at the chosen level
+  batch_size:    128
+  # Tissue filter: a tile is kept only if it clears both thresholds
+  tissue_thresh: 0.12    # min mean HSV saturation
+  purple_thresh: 0.30    # min fraction of tissue pixels with hematoxylin hue
+
+# Slide-level ground-truth tables, selected with --table internal|external|all.
+# Neither table ships: `datasets/` is gitignored, and the slides they name are
+# located by each table's `file_path` column.
+#
+#   internal: Bern (ITMP) lymph nodes, patient data under ethics approval.
+#              Not distributed and not reconstructible from public sources.
+#   external: nine evaluated cohorts, eight of them public. Download, then
+#              repoint the table's `file_path` column at the local copies:
+#
+#     breast_camelyon17   http://gigadb.org/dataset/100439
+#     breast_histai       https://huggingface.co/datasets/histai/HISTAI-breast
+#     crc_histai_b1       https://huggingface.co/datasets/histai/HISTAI-colorectal-b1
+#     endometrial_histai  no standalone repo yet; see https://huggingface.co/histai
+#     lung_histai_thorax  https://huggingface.co/datasets/histai/HISTAI-thorax
+#     melanoma_histai_b1  https://huggingface.co/datasets/histai/HISTAI-skin-b1
+#     melanoma_histai_b2  https://huggingface.co/datasets/histai/HISTAI-skin-b2
+#     gastric             https://figshare.com/articles/dataset/Gastric_cancer_lymph_node_data_set/13065986
+#     lung_yuritolkach    not public (UKK Cologne institutional cohort)
+#
+# docs/DATA_SOURCES.md is authoritative: it carries the citations, the access
+# terms, the per-cohort slide counts, and what has to be rebuilt by hand.
+tables:
+  - datasets/internal-slide-lvl-data.xlsx
+  - datasets/external-slide-lvl-data.xlsx
+

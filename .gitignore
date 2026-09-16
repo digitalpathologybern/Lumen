@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Source only. Model weights, datasets, caches and every generated artefact
+# stay out of the repository: they are downloaded or produced by the pipeline.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Python / tooling caches ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# ── Weights, data, and pipeline outputs ──────────────────────────────────────
+# Downloaded third-party checkpoints and public datasets, with one exception:
+# Lumen's own alignment is 12 MB and ships here, with the corpus ablation
+# beside it, so a reviewer can evaluate them straight from a clone.
+assets/*
+!assets/models/
+assets/models/*
+!assets/models/lumen_quilt_r4/
+!assets/models/lumen_pathgen_r4/
+datasets/        # slide-level tables for the whole-slide cohorts (not public)
+outputs/
+logs/
+mlruns/
+*.db
+
+# ── Generated artefacts, anywhere in the tree ────────────────────────────────
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.svg
+*.eps
+*.mrxs
+*.svs
+*.ndpi
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.csv
+*.tsv
+*.parquet
+*.xlsx
+*.zip
+*.tar
+*.tar.gz
+
+# ── Local environment and editor state ───────────────────────────────────────
+.env
+*.env
+.vscode/
+.idea/
+.claude/
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Pre-publication checklist, not part of the release.
+/RELEASE_TODO.md
+

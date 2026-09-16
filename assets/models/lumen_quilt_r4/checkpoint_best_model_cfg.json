@@ -1,0 +1,22 @@
+{
+  "architecture": "LoRA",
+  "vision_backbone": "Virchow2",
+  "text_backbone": "biomedBERT",
+  "proj_dim": 512,
+  "img_hidden": 5,
+  "txt_hidden": 3,
+  "img_comp": "direct",
+  "txt_comp": "direct",
+  "n_blocks": 3,
+  "span": 3,
+  "decay": 0.5,
+  "gated": false,
+  "attention": false,
+  "pre_gating": false,
+  "post_gating": false,
+  "use_residuals": false,
+  "lora": true,
+  "lora_mode": "both_encoders",
+  "r": 4,
+  "lora_dropout": 0.1
+}

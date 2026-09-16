@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lumen"
+version = "0.1.0"
+description = "Lumen: a pathology vision-language framework (encode, benchmark, reproduce)"
+readme = "README.md"
+license = "CC-BY-NC-4.0"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "pillow",
+    "scikit-learn",
+    "torch",
+    "timm",
+    "transformers",
+    "open_clip_torch",
+    "openpyxl",
+    "matplotlib",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+# The `conch` package is installed separately:
+#   pip install git+https://github.com/MahmoodLab/CONCH.git
+conch = []
+
+[tool.setuptools.packages.find]
+include = ["lumen*"]
+
+[tool.setuptools.package-data]
+lumen = ["**/*.yaml", "**/*.json"]
